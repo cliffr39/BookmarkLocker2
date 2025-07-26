@@ -1,6 +1,11 @@
 # Bookmark Locker
 
 Bookmark Locker is a robust and user-friendly Android application designed to help you organize, manage, and access your web bookmarks with ease. Beyond simple saving, it offers powerful features for categorization, reading, and synchronization, ensuring your valuable links are always at your fingertips, exactly how you like them.
+
+📸 Screenshots
+
+For a visual overview of Bookmark Locker, check out the [ScreenShots.md](ScreenShots.md) file.
+
 ✨ Features
 
 Bookmark Locker comes packed with a comprehensive set of features to enhance your bookmarking experience:
@@ -77,7 +82,7 @@ Bookmark Locker comes packed with a comprehensive set of features to enhance you
 
 🚀 Getting Started
 
-For detailed instructions on how to set up and run Bookmark Locker on your local machine, please refer to the GETTING_STARTED.md file.
+For detailed instructions on how to set up and run Bookmark Locker on your local machine, please refer to the [GETTING_STARTED.md](GETTING_STARTED.md) file.
 🚧 Future Enhancements
 
 We are continuously working to improve Bookmark Locker. Here are some features I'm considering for future releases:
