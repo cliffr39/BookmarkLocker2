@@ -83,6 +83,7 @@ Bookmark Locker comes packed with a comprehensive set of features to enhance you
 🚀 Getting Started
 
 For detailed instructions on how to set up and run Bookmark Locker on your local machine, please refer to the [GETTING_STARTED.md](GETTING_STARTED.md) file.
+
 🚧 Future Enhancements
 
 We are continuously working to improve Bookmark Locker. Here are some features I'm considering for future releases:
