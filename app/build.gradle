@@ -32,9 +32,9 @@ android {
             // 1. Replace the values directly (not recommended for security)
             // 2. Use environment variables: System.getenv("KEYSTORE_PASSWORD")
             // 3. Use gradle.properties file with signing properties
-            storePassword 'F1rst@pp'
-            keyAlias 'my-key-alias'
-            keyPassword 'F1rst@pp'
+            storePassword 'ENTER_YOUR_DATA'
+            keyAlias 'you-key-alias-name'
+            keyPassword 'ENTER_YOUR_DATA'
         }
     }
 
