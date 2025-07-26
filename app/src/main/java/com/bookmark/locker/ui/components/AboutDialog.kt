@@ -1,5 +1,8 @@
 package com.bookmark.locker.ui.components
 
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -57,7 +60,7 @@ fun AboutDialog(
                 
                 // Version
                 Text(
-                    text = "Version 1.0 (1)",
+                    text = "Version 1.0.1 (2)",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -66,7 +69,7 @@ fun AboutDialog(
                 
                 // Description
                 Text(
-                    text = "A secure bookmark manager with reminder notifications, folder organization, and reading list features.",
+                    text = "A secure bookmark manager with reminder notifications, folder organization, reading list features, and cross-device sync with Firebase.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
@@ -75,9 +78,21 @@ fun AboutDialog(
                 
                 Spacer(modifier = Modifier.height(24.dp))
                 
-                // GitHub Section (placeholder)
+                // GitHub Section
                 Card(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            try {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://github.com/cliffr39/BookmarkLocker2/releases")
+                                )
+                                context.startActivity(intent)
+                            } catch (e: Exception) {
+                                // Handle error silently
+                            }
+                        },
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
                     ),
@@ -97,7 +112,7 @@ fun AboutDialog(
                         
                         Spacer(modifier = Modifier.width(12.dp))
                         
-                        Column {
+                        Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = "Open Source",
                                 style = MaterialTheme.typography.bodyMedium,
@@ -105,11 +120,18 @@ fun AboutDialog(
                                 color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
-                                text = "Coming soon to GitHub",
+                                text = "View releases on GitHub",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
+                        
+                        Icon(
+                            imageVector = Icons.Default.OpenInNew,
+                            contentDescription = "Open GitHub",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp)
+                        )
                     }
                 }
                 
