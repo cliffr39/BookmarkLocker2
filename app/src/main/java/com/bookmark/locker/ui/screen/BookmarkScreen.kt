@@ -30,6 +30,7 @@ import com.bookmark.locker.permission.PermissionManager
 import com.bookmark.locker.ui.components.*
 import com.bookmark.locker.ui.viewmodel.BookmarkTab
 import com.bookmark.locker.ui.viewmodel.BookmarkViewModel
+import com.bookmark.locker.ui.viewmodel.UpdateCheckerViewModel
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 
@@ -37,6 +38,7 @@ import androidx.activity.compose.BackHandler
 @Composable
 fun BookmarkScreen(
     viewModel: BookmarkViewModel = hiltViewModel(),
+    updateCheckerViewModel: UpdateCheckerViewModel = hiltViewModel(),
     sharedTitle: String? = null,
     sharedUrl: String? = null,
     permissionManager: PermissionManager
@@ -55,6 +57,9 @@ fun BookmarkScreen(
     val folders by viewModel.folders.collectAsState()
     val viewMode by viewModel.viewMode.collectAsState()
     val pendingUndoAction by viewModel.pendingUndoAction.collectAsState()
+    
+    // Update checker state
+    val updateState by updateCheckerViewModel.updateState.collectAsState()
     
     var showAddBookmarkDialog by remember { mutableStateOf(false) }
     var showAddFolderDialog by remember { mutableStateOf(false) }
@@ -634,7 +639,45 @@ fun BookmarkScreen(
     // About dialog
     if (showAboutDialog) {
         AboutDialog(
-            onDismiss = { showAboutDialog = false }
+            onDismiss = { showAboutDialog = false },
+            onCheckForUpdates = {
+                updateCheckerViewModel.forceCheckForUpdates()
+                Toast.makeText(context, "Checking for updates...", Toast.LENGTH_SHORT).show()
+            }
         )
+    }
+    
+    // Update dialog
+    when (val state = updateState) {
+        is UpdateCheckerViewModel.UpdateState.UpdateAvailable -> {
+            UpdateDialog(
+                currentVersion = state.updateInfo.currentVersion,
+                latestVersion = state.updateInfo.latestVersion ?: "Unknown",
+                releaseNotes = state.updateInfo.releaseNotes,
+                downloadUrl = state.updateInfo.downloadUrl ?: "",
+                onUpdateClicked = {
+                    updateCheckerViewModel.hideUpdateDialog()
+                },
+                onDismiss = {
+                    updateCheckerViewModel.hideUpdateDialog()
+                },
+                onNotNow = {
+                    updateCheckerViewModel.dismissUpdate()
+                }
+            )
+        }
+        is UpdateCheckerViewModel.UpdateState.NoUpdateFound -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, "You are on current version", Toast.LENGTH_SHORT).show()
+                updateCheckerViewModel.hideUpdateDialog()
+            }
+        }
+        is UpdateCheckerViewModel.UpdateState.Error -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, "Update check failed: ${state.message}", Toast.LENGTH_LONG).show()
+                updateCheckerViewModel.hideUpdateDialog()
+            }
+        }
+        else -> { /* No dialog needed */ }
     }
 }

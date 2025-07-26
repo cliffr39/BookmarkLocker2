@@ -21,6 +21,7 @@ import androidx.compose.ui.window.Dialog
 @Composable
 fun AboutDialog(
     onDismiss: () -> Unit,
+    onCheckForUpdates: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -60,7 +61,7 @@ fun AboutDialog(
                 
                 // Version
                 Text(
-                    text = "Version 1.0.1 (b)",
+                    text = "Version 1.0.2",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -135,7 +136,23 @@ fun AboutDialog(
                     }
                 }
                 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                // Check for Updates button
+                OutlinedButton(
+                    onClick = onCheckForUpdates,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.SystemUpdate,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Check for Updates")
+                }
+                
+                Spacer(modifier = Modifier.height(12.dp))
                 
                 // Close button
                 FilledTonalButton(
