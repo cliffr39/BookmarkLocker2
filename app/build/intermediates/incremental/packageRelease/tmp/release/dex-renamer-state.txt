@@ -1,0 +1,13 @@
+#Sat Jul 26 14:02:04 EDT 2025
+base.0=/Users/cliff/AndroidStudioProjects/pixel-bookmark-clone/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+base.1=/Users/cliff/AndroidStudioProjects/pixel-bookmark-clone/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+base.2=/Users/cliff/AndroidStudioProjects/pixel-bookmark-clone/app/build/intermediates/dex/release/mergeDexRelease/classes3.dex
+base.3=/Users/cliff/AndroidStudioProjects/pixel-bookmark-clone/app/build/intermediates/dex/release/mergeDexRelease/classes4.dex
+path.0=classes.dex
+path.1=classes2.dex
+path.2=classes3.dex
+path.3=classes4.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex

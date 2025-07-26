@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.bookmark.locker.app-mergeReleaseResources-79:/layout/bookmark_widget.xml",
+        "source": "com.bookmark.locker.app-main-81:/layout/bookmark_widget.xml"
+    },
+    {
+        "merged": "com.bookmark.locker.app-mergeReleaseResources-79:/layout/activity_webview_enhanced.xml",
+        "source": "com.bookmark.locker.app-main-81:/layout/activity_webview_enhanced.xml"
+    },
+    {
+        "merged": "com.bookmark.locker.app-mergeReleaseResources-79:/layout/activity_webview_simple.xml",
+        "source": "com.bookmark.locker.app-main-81:/layout/activity_webview_simple.xml"
+    }
+]
