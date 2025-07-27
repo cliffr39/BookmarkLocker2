@@ -1,0 +1,32 @@
+// bookmark-locker-extension/manifest.json
+{
+  "manifest_version": 2, // Firefox currently recommends Manifest V2 for broader compatibility
+  "name": "Bookmark Locker Sync",
+  "version": "1.0",
+  "description": "Syncs your bookmarks with Bookmark Locker Android app via Firebase.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": { // For Manifest V2, use browser_action instead of action
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"], // For Manifest V2, use "scripts" array
+    "persistent": true // For Manifest V2, background scripts are persistent by default
+  },
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "storage",
+    "identity", // Required for browser.identity API for Google Sign-In
+    "https://*.firebaseio.com/", // Host permissions for Firebase
+    "https://*.googleapis.com/",
+    "https://securetoken.googleapis.com/" // Often needed for auth
+  ]
+}

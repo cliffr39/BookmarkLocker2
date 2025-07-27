@@ -1,1 +1,43 @@
+<!-- bookmark-locker-extension/popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bookmark Locker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-xl font-bold mb-4 text-center">Bookmark Locker</h1>
 
+    <div id="auth-section" class="mb-4 p-4 bg-gray-700 rounded-lg shadow-md">
+      <div id="auth-status" class="text-white text-sm mb-2 text-center">Not signed in.</div>
+      <button id="google-signin-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">
+        Sign in with Google
+      </button>
+      <button id="signout-button" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 mt-2" style="display:none;">
+        Sign Out
+      </button>
+    </div>
+
+    <div id="main-actions" class="p-4 bg-gray-700 rounded-lg shadow-md" style="display:none;">
+      <button id="save-bookmark-button" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">
+        Save Current Page to Locker
+      </button>
+      <hr class="border-gray-600 my-4">
+      <h2 class="text-lg font-semibold text-white mb-2">My Locker Bookmarks</h2>
+      <div id="bookmarks-list" class="max-h-60 overflow-y-auto bg-gray-800 p-2 rounded-md">
+        <p class="text-gray-400 text-sm text-center">Loading bookmarks...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Firebase SDKs from CDN (for simplicity in extension) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="background.js"></script> <!-- Background script handles Firebase init -->
+  <script src="popup.js"></script>
+</body>
+</html>
